@@ -18,6 +18,7 @@ var client = new Twitter(twitterCreds);
 
 var stream = client.stream('statuses/filter', {track: 'javascript'});
 stream.on('data', function(event) {
+  io.emit('newTweet', event)
   console.log(event && event.text);
 });
 
